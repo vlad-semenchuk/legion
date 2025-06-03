@@ -8,7 +8,6 @@ import { parse } from 'csv-parse/sync';
 import * as fs from 'fs';
 import * as path from 'path';
 import { AppModule } from '../app.module';
-import { User } from '../entities/user.entity';
 import { UserService } from '../services/user.service';
 
 interface CSVUserRow {
@@ -50,16 +49,9 @@ async function registerUsersFromCSV() {
     const records = await readCSVFile(csvFilePath);
     console.log(`Found ${records.length} user records`);
 
-    const users = records.map((record) => {
-      const user = new User();
-      user.twitter = record.twitter;
-      user.wallet = record.wallet;
-      return user;
-    });
+    await usersService.upsert(records);
 
-    await usersService.upsert(users);
-
-    console.log(`✅ Successfully processed ${users.length} users`);
+    console.log(`✅ Successfully processed ${records.length} users`);
   } catch (error) {
     console.error('❌ Error:', error.message);
     process.exit(1);

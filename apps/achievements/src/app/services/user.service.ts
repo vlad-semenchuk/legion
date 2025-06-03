@@ -1,36 +1,50 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { User } from '../entities/user.entity';
 
-// TODO: Remove unused methods
 @Injectable()
 export class UserService {
   @InjectRepository(User) private readonly userRepository: Repository<User>;
 
-  async save(user: User): Promise<User> {
-    return this.userRepository.save(user);
-  }
+  async upsert(users: { twitter: string; wallet: string }[]): Promise<void> {
+    const usersToInsert = users.map((user) => {
+      const newUser = new User();
+      newUser.twitter = user.twitter;
+      newUser.wallet = user.wallet;
+      return newUser;
+    });
 
-  async upsert(users: User[]): Promise<void> {
     await this.userRepository
       .createQueryBuilder()
       .insert()
       .into(User)
-      .values(users)
+      .values(usersToInsert)
       .orIgnore()
       .execute();
   }
 
-  async findUserByUserId(userId: number): Promise<User | null> {
-    return this.userRepository.findOne({ where: { id: userId } });
+  async findById(id: number): Promise<User | null> {
+    return this.userRepository.findOne({ where: { id } });
   }
 
-  async findUserByWallet(wallet: string): Promise<User | null> {
-    return this.userRepository.findOne({ where: { wallet } });
+  async findManyByTwitter(twitterHandles: string[]): Promise<User[]> {
+    if (twitterHandles.length === 0) {
+      return [];
+    }
+
+    return this.userRepository.find({
+      where: { twitter: In(twitterHandles) },
+    });
   }
 
-  async findUserByTwitter(twitter: string): Promise<User | null> {
-    return this.userRepository.findOne({ where: { twitter } });
+  async findManyByWallet(wallets: string[]): Promise<User[]> {
+    if (wallets.length === 0) {
+      return [];
+    }
+
+    return this.userRepository.find({
+      where: { wallet: In(wallets) },
+    });
   }
 }
