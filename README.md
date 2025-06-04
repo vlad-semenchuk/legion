@@ -1,163 +1,60 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Legion Home Task - NestJS Achievements System
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A NestJS-based achievements system that rewards users with badges based on their activity across different platforms (on-chain, Discord, Twitter, Telegram).
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🎯 Task Overview
 
-## Description
+This project implements **Legion Achievements** - a foundational system for managing user badges and achievements. The system includes:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- ✅ **Badge Management**: Define and create badge types in the database
+- ✅ **CSV-based Badge Assignment**: Scripts to assign badges using CSV data files
+- ✅ **RESTful API**: Endpoints to retrieve user achievements and available badges
+- ✅ **Swagger Documentation**: Complete API documentation
+- ✅ **E2E Testing**: Comprehensive test coverage
+- ✅ **Automatic Badge Assignment**: Auto-assign badges to new users when they match achievement criteria
 
-## Project setup
+## 🚀 Key Features
 
-```bash
-$ pnpm install
-```
+### Badge Types Supported
 
-## Compile and run the project
+- **On-chain Badges**: For users with Ethereum wallets (Early Staker)
+- **Twitter Badges**: For users with active Twitter presence (Ecosystem Voice)
+- **Extensible**: Ready for Discord and Telegram badges
 
-```bash
-# development
-$ pnpm run start
+### Available Badges
 
-# watch mode
-$ pnpm run start:dev
+#### 🔗 On-chain Badge: "Early Staker"
 
-# production mode
-$ pnpm run start:prod
-```
+- **ID**: `onchain-early-staker`
+- **Description**: Awarded for staking tokens within the first 100 blocks of genesis
+- **Lore**: "When the chain was but a spark, you forged the first commitment. Validators still whisper of your courage."
 
-## Run tests
+#### 🐦 Twitter Badge: "Ecosystem Voice"
 
-```bash
-# unit tests
-$ pnpm run test
+- **ID**: `twitter-ecosystem-voice`
+- **Description**: Awarded for tweeting consistently about the protocol and hitting 10,000+ impressions
+- **Lore**: "In the realm of hashtags and handles, your words echoed far and wide, rallying the curious and the bold."
 
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
-
-# Legion Monorepo
-
-A NestJS monorepo structure with the Achievements API and shared libraries.
-
-## Project Structure
-
-```
-legion/
-├── apps/
-│   ├── achievements/           # Achievements API service
-│   │   ├── src/
-│   │   │   ├── main.ts        # Application entry point
-│   │   │   └── achievements/   # Core achievements module
-│   │   │       ├── achievements.controller.ts
-│   │   │       ├── achievements.module.ts
-│   │   │       ├── badges.service.ts
-│   │   │       ├── user-badges.service.ts
-│   │   │       ├── dto/        # Data Transfer Objects
-│   │   │       │   ├── create-badge.dto.ts
-│   │   │       │   ├── assign-badge.dto.ts
-│   │   │       │   └── index.ts
-│   │   │       └── scripts/    # CLI scripts
-│   │   │           └── assign-badge.cli.ts
-│   │   └── test/
-│   └── legion/                 # Default app (can be removed)
-└── libs/
-    ├── database/               # Database configuration
-    │   ├── src/
-    │   │   ├── database.module.ts
-    │   │   ├── database.service.ts
-    │   │   ├── typeorm.config.ts
-    │   │   ├── datasource.ts
-    │   │   └── index.ts
-    │   └── migrations/         # Database migrations
-    └── core/                   # Shared utilities
-        └── src/
-            ├── core.module.ts
-            ├── core.service.ts
-            ├── app-builder.ts  # Global pipes, Swagger, CORS setup
-            └── index.ts
-```
-
-## Getting Started
-
-### Prerequisites
+## 📋 Prerequisites
 
 - Node.js (v18+)
 - pnpm
 - PostgreSQL
 
-### Installation
+## 🛠️ Installation & Setup
 
 ```bash
 # Install dependencies
 pnpm install
 
-# Start PostgreSQL (make sure it's running)
-# Create database: legion_achievements
+# Set up environment variables (see .env.example)
+cp .env.example .env
 
-# Start the achievements service in development mode
-pnpm run start:dev achievements
+# Start PostgreSQL and create database
+# Run database migrations (if needed)
+
+# Start the achievements service
+pnpm run start achievements
 ```
 
 ### Environment Variables
@@ -175,100 +72,140 @@ DB_NAME=legion_achievements
 # Application
 NODE_ENV=development
 PORT=3000
-
-# CORS
-CORS_ORIGIN=http://localhost:3000
 ```
 
-## Available Commands
+## 🔧 Script Commands
+
+### User Registration
+
+Register users from CSV file:
 
 ```bash
-# Development
-pnpm run start:dev achievements    # Start achievements service in watch mode
-pnpm run start:dev legion         # Start default service
-
-# Production
-pnpm run build                    # Build all apps and libs
-pnpm run start:prod achievements  # Start achievements service in production mode
-
-# Testing
-pnpm run test                     # Run unit tests
-pnpm run test:e2e                 # Run end-to-end tests
-
-# Linting
-pnpm run lint                     # Run ESLint
-pnpm run format                   # Run Prettier
+pnpm run register-users data/users.csv
 ```
 
-## API Documentation
+### Badge Assignment
 
-When the achievements service is running, you can access:
+Assign badges to users based on CSV data:
+
+```bash
+# Assign on-chain badges to Ethereum wallet holders
+pnpm run assign-badges data/ethereum_wallets_100k.csv onchain-early-staker
+
+# Assign Twitter badges to Twitter users
+pnpm run assign-badges data/twitter_usernames_100k.csv twitter-ecosystem-voice
+```
+
+### Application Control
+
+```bash
+# Start the achievements service
+pnpm run start achievements
+
+# Start in development mode with hot reload
+pnpm run start:dev achievements
+
+# Run E2E tests
+pnpm run test:e2e:achievements
+```
+
+## 📡 API Endpoints
+
+The achievements API provides the following endpoints:
+
+### User Achievements
+
+- **GET** `/achievements/:userId` - Retrieve specific user's achievements
+
+### Badge Management
+
+- **GET** `/achievements/badges` - Fetch all available badges grouped by badge type
+
+### API Documentation
+
+When running, access the interactive Swagger documentation at:
 
 - **Swagger UI**: http://localhost:3000/api/docs
-- **API Base URL**: http://localhost:3000/achievements
 
-### API Endpoints
-
-#### Badges Management
-- `GET /achievements/badges` - Get all badges
-- `GET /achievements/badges/:id` - Get badge by ID
-- `POST /achievements/badges` - Create a new badge
-
-#### User Badges Management
-- `GET /achievements/users/:userId/badges` - Get user's badges
-- `POST /achievements/users/:userId/badges/:badgeId` - Assign badge to user
-- `DELETE /achievements/users/:userId/badges/:badgeId` - Revoke badge from user
-
-## CLI Tools
-
-### Assign Badge CLI
+## 🧪 Testing
 
 ```bash
-# Using ts-node directly
-npx ts-node apps/achievements/src/achievements/scripts/assign-badge.cli.ts <userId> <badgeId> [assignedBy]
+# Run all tests
+pnpm run test
 
-# Example
-npx ts-node apps/achievements/src/achievements/scripts/assign-badge.cli.ts user123 1 admin
+# Run E2E tests for achievements
+pnpm run test:e2e:achievements
+
+# Run tests with coverage
+pnpm run test:cov
 ```
 
-## Architecture
+## 🏗️ Project Structure
 
-### Shared Libraries
+```
+legion/
+├── apps/
+│   └── achievements/           # Main achievements API service
+│       ├── src/
+│       │   ├── main.ts        # Application entry point
+│       │   └── app/
+│       │       ├── achievements/           # Core achievements module
+│       │       │   ├── achievements.controller.ts
+│       │       │   ├── achievements.service.ts
+│       │       │   ├── badges.service.ts
+│       │       │   └── dto/               # Data Transfer Objects
+│       │       └── scripts/               # CLI scripts
+│       │           ├── register-users.cli.ts
+│       │           └── assign-badges.cli.ts
+│       └── test/              # E2E tests
+├── libs/
+│   ├── database/              # Database configuration & entities
+│   └── core/                  # Shared utilities & configurations
+└── data/                      # CSV data files
+    ├── users.csv
+    ├── ethereum_wallets_100k.csv
+    └── twitter_usernames_100k.csv
+```
 
-- **@app/core**: Contains the `AppBuilder` utility for setting up global pipes, Swagger documentation, CORS, and other common application configurations.
-- **@app/database**: Contains TypeORM configuration, database module, and migration setup.
+## 🔄 Development Workflow
 
-### Services
+1. **Register Users**: Use the CSV file to populate initial user data
+2. **Assign Badges**: Run badge assignment scripts for different platforms
+3. **Test API**: Use Swagger UI to test endpoints
+4. **Run Tests**: Ensure E2E tests pass
 
-- **BadgesService**: Manages badge definitions and CRUD operations
-- **UserBadgesService**: Manages user-badge assignments and relationships
+## 🎯 Technical Implementation
 
-### Features
+### Technologies Used
 
-- ✅ Modular monorepo structure
-- ✅ TypeScript configuration
-- ✅ Swagger API documentation
-- ✅ Global validation pipes
-- ✅ CORS support
-- ✅ Database configuration with TypeORM
-- ✅ CLI tools for badge management
-- ✅ In-memory data storage (ready for database integration)
+- **NestJS**: Progressive Node.js framework
+- **TypeScript**: Type-safe development
+- **TypeORM**: Database ORM with PostgreSQL
+- **Class Validator**: DTO validation
+- **Swagger**: API documentation
+- **Jest & Supertest**: Testing framework
 
-## Next Steps
+### Key Features Implemented
 
-1. **Database Integration**: Replace in-memory storage with actual database entities
-2. **Authentication**: Add JWT authentication and authorization
-3. **Real-time Updates**: Add WebSocket support for real-time badge notifications
-4. **Caching**: Implement Redis caching for performance
-5. **Testing**: Add comprehensive unit and integration tests
-6. **Deployment**: Add Docker configurations and CI/CD pipelines
+- ✅ Database schema for badges and user achievements
+- ✅ CSV parsing and batch operations
+- ✅ RESTful API with proper DTOs
+- ✅ Swagger documentation
+- ✅ E2E test coverage
+- ✅ CLI scripts for data management
+- ✅ Automatic badge assignment for new users
 
-## Development
+## 🔮 Bonus Features
 
-This project follows NestJS conventions and best practices:
+- **Swagger Documentation**: Complete API documentation with examples
+- **Automatic Badge Assignment**: New users automatically receive badges if they match criteria in achievement lists
+- **Extensible Architecture**: Ready for additional badge types (Discord, Telegram)
+- **Performance Optimized**: Efficient batch operations for large CSV files
 
-- Modular architecture with feature-based organization
-- Dependency injection for loose coupling
-- DTOs for request/response validation
-- Shared libraries for reusable code
-- CLI tools for administrative tasks
+## 📝 License
+
+This project is part of the Legion Home Task implementation.
+
+---
+
+**Note**: This is a home task implementation demonstrating NestJS proficiency, database design, API development, and testing practices.
