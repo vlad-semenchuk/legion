@@ -1,9 +1,22 @@
 {
   "moduleFileExtensions": ["js", "json", "ts"],
-  "rootDir": ".",
+  "rootDir": "../../..",
   "testEnvironment": "node",
   "testRegex": ".e2e-spec.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
-  }
+  },
+  "moduleNameMapper": {
+    "^@app/core(|/.*)$": "<rootDir>/libs/core/src/$1",
+    "^@app/database(|/.*)$": "<rootDir>/libs/database/src/$1",
+    "^@app/migrations(|/.*)$": "<rootDir>/libs/migrations/src/$1",
+    "^@app/config(|/.*)$": "<rootDir>/libs/config/src/$1"
+  },
+  "setupFilesAfterEnv": ["<rootDir>/apps/achievements/test/setup.ts"],
+  "collectCoverageFrom": [
+    "apps/achievements/src/**/*.(t|j)s",
+    "!apps/achievements/src/**/*.spec.ts",
+    "!apps/achievements/src/**/*.e2e-spec.ts"
+  ],
+  "coverageDirectory": "<rootDir>/coverage/achievements"
 }
