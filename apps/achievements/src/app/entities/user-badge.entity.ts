@@ -5,11 +5,11 @@ import {
   ManyToOne,
   PrimaryColumn,
 } from 'typeorm';
-import { Badge } from './badge.entity';
-import { User } from './user.entity';
+import { BadgeEntity } from './badge.entity';
+import { UserEntity } from './user.entity';
 
 @Entity('user_badges')
-export class UserBadge {
+export class UserBadgeEntity {
   @PrimaryColumn({ name: 'user_id' })
   user_id: number;
 
@@ -19,11 +19,11 @@ export class UserBadge {
   @CreateDateColumn()
   created_at: Date;
 
-  @ManyToOne(() => User, { onDelete: 'CASCADE' })
+  @ManyToOne(() => UserEntity, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
-  user: User;
+  user: UserEntity;
 
-  @ManyToOne(() => Badge, { onDelete: 'CASCADE' })
+  @ManyToOne(() => BadgeEntity, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'badge_id' })
-  badge: Badge;
+  badge: BadgeEntity;
 }

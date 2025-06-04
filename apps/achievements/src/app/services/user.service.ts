@@ -1,15 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
-import { User } from '../entities/user.entity';
+import { UserEntity } from '../entities/user.entity';
 
 @Injectable()
 export class UserService {
-  @InjectRepository(User) private readonly userRepository: Repository<User>;
+  @InjectRepository(UserEntity)
+  private readonly userRepository: Repository<UserEntity>;
 
   async upsert(users: { twitter: string; wallet: string }[]): Promise<void> {
     const usersToInsert = users.map((user) => {
-      const newUser = new User();
+      const newUser = new UserEntity();
       newUser.twitter = user.twitter;
       newUser.wallet = user.wallet;
       return newUser;
@@ -18,17 +19,17 @@ export class UserService {
     await this.userRepository
       .createQueryBuilder()
       .insert()
-      .into(User)
+      .into(UserEntity)
       .values(usersToInsert)
       .orIgnore()
       .execute();
   }
 
-  async findById(id: number): Promise<User | null> {
+  async findById(id: number): Promise<UserEntity | null> {
     return this.userRepository.findOne({ where: { id } });
   }
 
-  async findManyByTwitter(twitterHandles: string[]): Promise<User[]> {
+  async findManyByTwitter(twitterHandles: string[]): Promise<UserEntity[]> {
     if (twitterHandles.length === 0) {
       return [];
     }
@@ -38,7 +39,7 @@ export class UserService {
     });
   }
 
-  async findManyByWallet(wallets: string[]): Promise<User[]> {
+  async findManyByWallet(wallets: string[]): Promise<UserEntity[]> {
     if (wallets.length === 0) {
       return [];
     }

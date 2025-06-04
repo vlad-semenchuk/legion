@@ -1,7 +1,7 @@
 import { AppBuilder } from '@app/core';
-import { AppModule } from './app/app.module';
+import { AchievementsModule } from './app/achievements.module';
 
-AppBuilder.create(AppModule)
+AppBuilder.create(AchievementsModule)
   .setupSwagger({
     title: 'Achievements API',
     version: '1.0',

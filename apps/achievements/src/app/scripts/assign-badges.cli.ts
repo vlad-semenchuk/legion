@@ -7,7 +7,7 @@ import { NestFactory } from '@nestjs/core';
 import { parse } from 'csv-parse/sync';
 import * as fs from 'fs';
 import * as path from 'path';
-import { AppModule } from '../app.module';
+import { AchievementsModule } from '../achievements.module';
 import { BadgeService } from '../services/badge.service';
 import { UserBadgesService } from '../services/user-badges.service';
 import { UserService } from '../services/user.service';
@@ -55,7 +55,7 @@ function chunkArray<T>(array: T[], chunkSize: number): T[][] {
 }
 
 async function assignBadgesToUsers() {
-  const app = await NestFactory.createApplicationContext(AppModule);
+  const app = await NestFactory.createApplicationContext(AchievementsModule);
   const userService = app.get(UserService);
   const badgeService = app.get(BadgeService);
   const userBadgesService = app.get(UserBadgesService);

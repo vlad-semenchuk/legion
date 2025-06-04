@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('badges')
-export class Badge {
+export class BadgeEntity {
   @PrimaryColumn({ length: 100 })
   id: string;
 

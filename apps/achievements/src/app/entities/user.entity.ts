@@ -6,7 +6,7 @@ import { Column } from 'typeorm';
 
 @Entity('users')
 @Unique(['twitter', 'wallet'])
-export class User {
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

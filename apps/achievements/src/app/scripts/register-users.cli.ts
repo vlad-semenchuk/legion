@@ -7,7 +7,7 @@ import { NestFactory } from '@nestjs/core';
 import { parse } from 'csv-parse/sync';
 import * as fs from 'fs';
 import * as path from 'path';
-import { AppModule } from '../app.module';
+import { AchievementsModule } from '../achievements.module';
 import { UserService } from '../services/user.service';
 
 interface CSVUserRow {
@@ -33,7 +33,7 @@ async function readCSVFile(filePath: string): Promise<CSVUserRow[]> {
 }
 
 async function registerUsersFromCSV() {
-  const app = await NestFactory.createApplicationContext(AppModule);
+  const app = await NestFactory.createApplicationContext(AchievementsModule);
   const usersService = app.get(UserService);
 
   const args = process.argv.slice(2);
