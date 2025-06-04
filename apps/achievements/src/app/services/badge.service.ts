@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { BadgeEntity } from '../entities/badge.entity';
 
 @Injectable()
@@ -10,6 +10,13 @@ export class BadgeService {
 
   async findById(id: string): Promise<BadgeEntity | null> {
     return this.repository.findOne({ where: { id } });
+  }
+
+  async findByIds(ids: string[]): Promise<BadgeEntity[]> {
+    if (ids.length === 0) {
+      return [];
+    }
+    return this.repository.find({ where: { id: In(ids) } });
   }
 
   async findByTitle(title: string): Promise<BadgeEntity | null> {

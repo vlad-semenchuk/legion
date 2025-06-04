@@ -7,6 +7,7 @@ import { RootController } from './controllers/root.controller';
 import { BadgeEntity } from './entities/badge.entity';
 import { UserBadgeEntity } from './entities/user-badge.entity';
 import { UserEntity } from './entities/user.entity';
+import { AchievementCacheService } from './services/achievement-cache.service';
 import { AchievementsService } from './services/achievements.service';
 import { BadgeService } from './services/badge.service';
 import { UserBadgesService } from './services/user-badges.service';
@@ -23,6 +24,7 @@ import { UserService } from './services/user.service';
     BadgeService,
     UserBadgesService,
     AchievementsService,
+    AchievementCacheService,
   ],
 })
 export class AchievementsModule {}

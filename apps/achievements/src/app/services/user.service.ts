@@ -1,12 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
+import { CreateUserDto } from '../dto/create-user.dto';
 import { UserEntity } from '../entities/user.entity';
+import { AchievementCacheService } from './achievement-cache.service';
+import { BadgeService } from './badge.service';
+import { UserBadgesService } from './user-badges.service';
 
 @Injectable()
 export class UserService {
-  @InjectRepository(UserEntity)
-  private readonly userRepository: Repository<UserEntity>;
+  constructor(
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>,
+    private readonly achievementCacheService: AchievementCacheService,
+    private readonly userBadgesService: UserBadgesService,
+    private readonly badgeService: BadgeService,
+  ) {}
 
   async upsert(users: { twitter: string; wallet: string }[]): Promise<void> {
     const usersToInsert = users.map((user) => {
@@ -47,5 +56,13 @@ export class UserService {
     return this.userRepository.find({
       where: { wallet: In(wallets) },
     });
+  }
+
+  async createUser(createUserDto: CreateUserDto): Promise<UserEntity> {
+    const user = new UserEntity();
+    user.twitter = createUserDto.twitter;
+    user.wallet = createUserDto.wallet;
+
+    return this.userRepository.save(user);
   }
 }
