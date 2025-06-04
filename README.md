@@ -63,11 +63,10 @@ Create a `.env` file in the root directory:
 
 ```env
 # Database Configuration
-DB_HOST=localhost
-DB_PORT=5432
-DB_USERNAME=postgres
-DB_PASSWORD=password
-DB_NAME=legion_achievements
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/legion
+DATABASE_LOGGING=false
+DATABASE_SCHEMA=public
+DATABASE_RUN_MIGRATIONS=false
 
 # Application
 NODE_ENV=development
@@ -75,6 +74,12 @@ PORT=3000
 ```
 
 ## 🔧 Script Commands
+
+> **📂 Important**: Before running the scripts below, ensure you have placed the CSV files in the `/data` folder:
+>
+> - `data/users.csv` - User registration data
+> - `data/ethereum_wallets_100k.csv` - Ethereum wallet addresses for on-chain badges
+> - `data/twitter_usernames_100k.csv` - Twitter usernames for Twitter badges
 
 ### User Registration
 
