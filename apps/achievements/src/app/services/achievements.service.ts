@@ -47,7 +47,7 @@ export class AchievementsService {
     const dto = new BadgeDto();
     dto.id = entity.id;
     dto.type = entity.type;
-    dto.icon = entity.icon;
+    dto.iconUrl = this.buildIconUrl(entity.icon);
     dto.title = entity.title;
     dto.description = entity.description;
     dto.lore = entity.lore;
@@ -61,5 +61,9 @@ export class AchievementsService {
     dto.earned_at = entity.created_at;
     dto.badge = this.transformBadgeEntityToDto(entity.badge);
     return dto;
+  }
+
+  private buildIconUrl(iconFilename: string): string {
+    return `/assets/icons/${iconFilename}`;
   }
 }

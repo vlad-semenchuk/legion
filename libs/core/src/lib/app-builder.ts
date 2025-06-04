@@ -6,7 +6,9 @@ import {
   ValidationPipeOptions,
 } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as path from 'path';
 
 export type BeforeStartHook<T = INestApplicationContext> = (
   app: T,
@@ -72,6 +74,23 @@ export class AppBuilder<T extends INestApplication = INestApplication> {
           ...options,
         }),
       );
+    });
+  }
+
+  enableStaticAssets(options: {
+    path: string;
+    staticPath: string;
+  }): AppBuilder<T> {
+    return this.beforeStart((app) => {
+      const expressApp = app as unknown as NestExpressApplication;
+      const resolvedPath = path.resolve(options.staticPath);
+
+      Logger.log(
+        `Serving static files from ${resolvedPath} at ${options.path}`,
+      );
+      expressApp.useStaticAssets(resolvedPath, {
+        prefix: options.path,
+      });
     });
   }
 }

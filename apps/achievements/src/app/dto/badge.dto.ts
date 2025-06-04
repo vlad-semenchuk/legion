@@ -23,14 +23,14 @@ export class BadgeDto {
   type: string;
 
   @ApiProperty({
-    description: 'Icon path for the badge',
-    example: 'onchain-icon.png',
+    description: 'Icon URL for the badge',
+    example: '/assets/icons/onchain-icon.png',
     maxLength: 255,
   })
   @IsString()
   @IsNotEmpty()
   @Length(1, 255)
-  icon: string;
+  iconUrl: string;
 
   @ApiProperty({
     description: 'Display title of the badge',

@@ -16,7 +16,8 @@
       "entryFile": "main",
       "sourceRoot": "apps/achievements/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/achievements/tsconfig.app.json"
+        "tsConfigPath": "apps/achievements/tsconfig.app.json",
+        "assets": ["assets/**/*"]
       }
     },
     "core": {
